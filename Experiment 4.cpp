@@ -1,26 +1,39 @@
 #include <iostream>
-#include <deque>
 using namespace std;
 
+class Base {
+public:
+    Base() {
+        cout << "Base class constructor called" << endl;
+    }
+    ~Base() {
+        cout << "Base class destructor called" << endl;
+    }
+};
+
+class Derived1 : public Base {
+public:
+    Derived1() {
+        cout << "Derived1 class constructor called" << endl;
+    }
+    ~Derived1() {
+        cout << "Derived1 class destructor called" << endl;
+    }
+};
+
+class Derived2 : public Derived1 {
+public:
+    Derived2() {
+        cout << "Derived2 class constructor called" << endl;
+    }
+    ~Derived2() {
+        cout << "Derived2 class destructor called" << endl;
+    }
+};
+
 int main() {
-    deque<int> dq;
-    dq.push_back(10); dq.push_back(20); dq.push_front(5);
-
-    cout << "Deque elements: ";
-    for (int x : dq) cout << x << " ";
-    cout << endl;
-
-    cout << "Front: " << dq.front() << ", Back: " << dq.back() << endl;
-
-    dq.pop_front(); dq.pop_back();
-    cout << "After deletion: ";
-    for (int x : dq) cout << x << " ";
-    cout << endl;
-
-    dq.push_front(100); dq.push_back(200);
-    cout << "Deque final state: ";
-    for (int x : dq) cout << x << " ";
-    cout << endl;
-
+    cout << "Creating object of Derived2 class..." << endl;
+    Derived2 obj;
+    cout << "Exiting main..." << endl;
     return 0;
 }

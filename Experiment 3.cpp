@@ -1,31 +1,35 @@
-#include <iostream>
-#include <vector>
-#include <list>
-using namespace std;
-
 int main() {
-    vector<int> v;
-    v.push_back(10); v.push_back(20); v.push_back(30);
+    cout << "\n--- Single Inheritance ---" << endl;
+    B b;
+    b.displayA();
+    b.displayB();
 
-    cout << "Vector elements: ";
-    for (int i : v) cout << i << " ";
-    cout << "\nSize: " << v.size() << ", Capacity: " << v.capacity() << endl;
+    cout << "\n--- Multiple Inheritance ---" << endl;
+    Z z;
+    z.displayX();
+    z.displayY();
+    z.displayZ();
 
-    v.pop_back();
-    cout << "After pop_back, Vector elements: ";
-    for (int x : v) cout << x << " ";
-    cout << endl;
+    cout << "\n--- Multi-level Inheritance ---" << endl;
+    GrandChild gc;
+    gc.displayParent();
+    gc.displayChild();
+    gc.displayGrandChild();
 
-    list<int> l;
-    l.push_back(100); l.push_front(50); l.push_back(150);
+    cout << "\n--- Hierarchical Inheritance ---" << endl;
+    Derived1 d1;
+    Derived2 d2;
+    d1.displayBase();
+    d1.displayDerived1();
+    d2.displayBase();
+    d2.displayDerived2();
 
-    cout << "\nList elements: ";
-    for (int x : l) cout << x << " ";
-
-    l.remove(100);
-    cout << "\nAfter removing 100, List elements: ";
-    for (int x : l) cout << x << " ";
-    cout << endl;
+    cout << "\n--- Hybrid Inheritance ---" << endl;
+    P p;
+    p.displayM();
+    p.displayN();
+    p.displayO();
+    p.displayP();
 
     return 0;
 }

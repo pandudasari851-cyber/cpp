@@ -1,24 +1,39 @@
 #include <iostream>
 using namespace std;
+class Number {
+private:
+    int value;
+public:
+    Number(int v = 0) {
+        value = v;
+    }
 
+    void operator++() {
+        ++value;
+    }
+
+    Number operator+(Number obj) {
+        Number temp;
+        temp.value = value + obj.value;
+        return temp;
+    }
+
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
 int main() {
-    int numerator, denominator;
-    cout << "Enter numerator: ";
-    cin >> numerator;
-    cout << "Enter denominator: ";
-    cin >> denominator;
+    Number n1(5), n2(10), n3;
+    cout << "Before Unary Operation:" << endl;
+    n1.display();
 
-    try {
-        if (denominator == 0) {
-            throw runtime_error("Division by zero is not allowed!");
-        }
-        double result = (double)numerator / denominator;
-        cout << "Result = " << result << endl;
-    }
-    catch (runtime_error &e) {
-        cout << "Exception caught: " << e.what() << endl;
-    }
+    ++n1;
+    cout << "After Unary Operation (++n1):" << endl;
+    n1.display();
 
-    cout << "Program continues after exception handling..." << endl;
+    n3 = n1 + n2;
+    cout << "After Binary Operation (n1 + n2):" << endl;
+    n3.display();
+
     return 0;
 }

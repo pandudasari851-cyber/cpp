@@ -1,22 +1,42 @@
 #include <iostream>
 using namespace std;
+class Number {
+private:
+    int value;
+public:
+    Number(int v = 0) {
+        value = v;
+    }
+
+    friend Number operator++(Number &n);
+    friend Number operator+(Number n1, Number n2);
+
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+
+Number operator++(Number &n) {
+    n.value++;
+    return n;
+}
+
+Number operator+(Number n1, Number n2) {
+    return Number(n1.value + n2.value);
+}
 
 int main() {
-    try {
-        int choice;
-        cout << "Enter 1 for int, 2 for float, 3 for string: ";
-        cin >> choice;
+    Number n1(5), n2(10), n3;
+    cout << "Before Unary Operation:" << endl;
+    n1.display();
 
-        if (choice == 1) throw 10;
-        else if (choice == 2) throw 3.14f;
-        else if (choice == 3) throw "Hello";
-        else throw 'X';
-    }
-    catch (int e) { cout << "Caught an integer exception: " << e << endl; }
-    catch (float e) { cout << "Caught a float exception: " << e << endl; }
-    catch (const char* e) { cout << "Caught a string exception: " << e << endl; }
-    catch (...) { cout << "Caught an unknown exception!" << endl; }
+    ++n1;
+    cout << "After Unary Operation (++n1):" << endl;
+    n1.display();
 
-    cout << "Program continues after exception handling." << endl;
+    n3 = n1 + n2;
+    cout << "After Binary Operation (n1 + n2):" << endl;
+    n3.display();
+
     return 0;
 }
