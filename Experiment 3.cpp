@@ -1,29 +1,29 @@
 #include <iostream>
 using namespace std;
-
-template <class T1, class T2>
-class MyClass {
-    T1 value1;
-    T2 value2;
+class Student {
+private:
+    string name;
+    int age;
 public:
-    MyClass(T1 v1, T2 v2) {
-        value1 = v1;
-        value2 = v2;
+    Student(string n, int a) {
+        name = n;
+        age = a;
+        cout << "Constructor called for " << name << endl;
     }
     void display() {
-        cout << "Value 1: " << value1 << ", Value 2: " << value2 << endl;
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+    ~Student() {
+        cout << "Destructor called for " << name << endl;
     }
 };
 
 int main() {
-    MyClass<int, float> obj1(10, 20.5);
-    obj1.display();
-
-    MyClass<string, char> obj2("Hello", 'A');
-    obj2.display();
-
-    MyClass<double, int> obj3(99.99, 100);
-    obj3.display();
-
+    Student s1("Rahul", 20);
+    s1.display();
+    {
+        Student s2("Priya", 19);
+        s2.display();
+    }
     return 0;
 }

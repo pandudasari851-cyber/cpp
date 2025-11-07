@@ -1,22 +1,28 @@
 #include <iostream>
-#include <map>
-#include <string>
 using namespace std;
-
+class Student {
+private:
+    string name;
+    int age;
+public:
+    Student(string n, int a) {
+        name = n;
+        age = a;
+        cout << "Parameterized Constructor called" << endl;
+    }
+    Student(const Student &s) {
+        name = s.name;
+        age = s.age;
+        cout << "Copy Constructor called" << endl;
+    }
+    void display() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
 int main() {
-    map<int, string> student;
-    student[1] = "Alice"; student[2] = "Bob";
-    student.insert({3, "Charlie"}); student.insert({4, "David"});
-
-    for (auto &p : student) cout << p.first << " -> " << p.second << endl;
-
-    auto it = student.find(3);
-    if (it != student.end()) cout << "\nFound: " << it->first << " -> " << it->second << endl;
-
-    student.erase(2);
-    cout << "\nAfter deleting key 2:" << endl;
-    for (auto &p : student) cout << p.first << " -> " << p.second << endl;
-
-    cout << "\nSize: " << student.size() << endl;
+    Student s1("Rahul", 20);
+    s1.display();
+    Student s2(s1);
+    s2.display();
     return 0;
 }

@@ -1,14 +1,29 @@
 #include <iostream>
 using namespace std;
 
-template <class T>
-T getMax(T a, T b) {
-    return (a > b) ? a : b;
+inline int square(int x) {
+    return x * x;
+}
+
+int add(int a, int b) {
+    return a + b;
+}
+double add(double a, double b) {
+    return a + b;
+}
+int add(int a, int b, int c) {
+    return a + b + c;
 }
 
 int main() {
-    cout << "Maximum of 10 and 20 is: " << getMax(10, 20) << endl;
-    cout << "Maximum of 5.5 and 2.3 is: " << getMax(5.5, 2.3) << endl;
-    cout << "Maximum of 'A' and 'Z' is: " << getMax('A', 'Z') << endl;
+    cout << "Inline Function Example:" << endl;
+    cout << "Square of 5 = " << square(5) << endl;
+    cout << "Square of 10 = " << square(10) << endl;
+
+    cout << "\nFunction Overloading Example:" << endl;
+    cout << "Addition of 2 and 3 = " << add(2, 3) << endl;
+    cout << "Addition of 2.5 and 3.7 = " << add(2.5, 3.7) << endl;
+    cout << "Addition of 1, 2 and 3 = " << add(1, 2, 3) << endl;
+
     return 0;
 }

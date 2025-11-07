@@ -1,37 +1,24 @@
 #include <iostream>
 using namespace std;
 
-template <class T>
-class Calculator {
-    T num1, num2;
+class Box {
+private:
+    int length;
 public:
-    Calculator(T n1, T n2) {
-        num1 = n1;
-        num2 = n2;
+    Box(int l) {
+        length = l;
     }
-
-    void displayResult() {
-        cout << "Numbers: " << num1 << " and " << num2 << endl;
-        cout << "Addition: " << num1 + num2 << endl;
-        cout << "Subtraction: " << num1 - num2 << endl;
-        cout << "Multiplication: " << num1 * num2 << endl;
-        cout << "Division: " << num1 / num2 << endl;
-        cout << "--------------------------" << endl;
-    }
+    friend void showLength(Box b);
 };
 
+void showLength(Box b) {
+    cout << "Length of the box = " << b.length << endl;
+}
+
 int main() {
-    Calculator<int> intCalc(10, 5);
-    cout << "Integer results:" << endl;
-    intCalc.displayResult();
-
-    Calculator<float> floatCalc(10.5, 5.2);
-    cout << "Float results:" << endl;
-    floatCalc.displayResult();
-
-    Calculator<double> doubleCalc(20.5, 4.5);
-    cout << "Double results:" << endl;
-    doubleCalc.displayResult();
-
+    Box b1(25);
+    showLength(b1);
     return 0;
 }
+
+
