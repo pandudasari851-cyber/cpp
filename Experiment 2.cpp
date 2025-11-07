@@ -1,42 +1,37 @@
 #include <iostream>
 using namespace std;
-class Number {
-private:
-    int value;
+
+template <class T>
+class Calculator {
+    T num1, num2;
 public:
-    Number(int v = 0) {
-        value = v;
+    Calculator(T n1, T n2) {
+        num1 = n1;
+        num2 = n2;
     }
 
-    friend Number operator++(Number &n);
-    friend Number operator+(Number n1, Number n2);
-
-    void display() {
-        cout << "Value: " << value << endl;
+    void displayResult() {
+        cout << "Numbers: " << num1 << " and " << num2 << endl;
+        cout << "Addition: " << num1 + num2 << endl;
+        cout << "Subtraction: " << num1 - num2 << endl;
+        cout << "Multiplication: " << num1 * num2 << endl;
+        cout << "Division: " << num1 / num2 << endl;
+        cout << "--------------------------" << endl;
     }
 };
 
-Number operator++(Number &n) {
-    n.value++;
-    return n;
-}
-
-Number operator+(Number n1, Number n2) {
-    return Number(n1.value + n2.value);
-}
-
 int main() {
-    Number n1(5), n2(10), n3;
-    cout << "Before Unary Operation:" << endl;
-    n1.display();
+    Calculator<int> intCalc(10, 5);
+    cout << "Integer results:" << endl;
+    intCalc.displayResult();
 
-    ++n1;
-    cout << "After Unary Operation (++n1):" << endl;
-    n1.display();
+    Calculator<float> floatCalc(10.5, 5.2);
+    cout << "Float results:" << endl;
+    floatCalc.displayResult();
 
-    n3 = n1 + n2;
-    cout << "After Binary Operation (n1 + n2):" << endl;
-    n3.display();
+    Calculator<double> doubleCalc(20.5, 4.5);
+    cout << "Double results:" << endl;
+    doubleCalc.displayResult();
 
     return 0;
 }

@@ -1,39 +1,14 @@
 #include <iostream>
 using namespace std;
-class Number {
-private:
-    int value;
-public:
-    Number(int v = 0) {
-        value = v;
-    }
 
-    void operator++() {
-        ++value;
-    }
+template <class T>
+T getMax(T a, T b) {
+    return (a > b) ? a : b;
+}
 
-    Number operator+(Number obj) {
-        Number temp;
-        temp.value = value + obj.value;
-        return temp;
-    }
-
-    void display() {
-        cout << "Value: " << value << endl;
-    }
-};
 int main() {
-    Number n1(5), n2(10), n3;
-    cout << "Before Unary Operation:" << endl;
-    n1.display();
-
-    ++n1;
-    cout << "After Unary Operation (++n1):" << endl;
-    n1.display();
-
-    n3 = n1 + n2;
-    cout << "After Binary Operation (n1 + n2):" << endl;
-    n3.display();
-
+    cout << "Maximum of 10 and 20 is: " << getMax(10, 20) << endl;
+    cout << "Maximum of 5.5 and 2.3 is: " << getMax(5.5, 2.3) << endl;
+    cout << "Maximum of 'A' and 'Z' is: " << getMax('A', 'Z') << endl;
     return 0;
 }

@@ -1,35 +1,29 @@
+#include <iostream>
+using namespace std;
+
+template <class T1, class T2>
+class MyClass {
+    T1 value1;
+    T2 value2;
+public:
+    MyClass(T1 v1, T2 v2) {
+        value1 = v1;
+        value2 = v2;
+    }
+    void display() {
+        cout << "Value 1: " << value1 << ", Value 2: " << value2 << endl;
+    }
+};
+
 int main() {
-    cout << "\n--- Single Inheritance ---" << endl;
-    B b;
-    b.displayA();
-    b.displayB();
+    MyClass<int, float> obj1(10, 20.5);
+    obj1.display();
 
-    cout << "\n--- Multiple Inheritance ---" << endl;
-    Z z;
-    z.displayX();
-    z.displayY();
-    z.displayZ();
+    MyClass<string, char> obj2("Hello", 'A');
+    obj2.display();
 
-    cout << "\n--- Multi-level Inheritance ---" << endl;
-    GrandChild gc;
-    gc.displayParent();
-    gc.displayChild();
-    gc.displayGrandChild();
-
-    cout << "\n--- Hierarchical Inheritance ---" << endl;
-    Derived1 d1;
-    Derived2 d2;
-    d1.displayBase();
-    d1.displayDerived1();
-    d2.displayBase();
-    d2.displayDerived2();
-
-    cout << "\n--- Hybrid Inheritance ---" << endl;
-    P p;
-    p.displayM();
-    p.displayN();
-    p.displayO();
-    p.displayP();
+    MyClass<double, int> obj3(99.99, 100);
+    obj3.display();
 
     return 0;
 }
